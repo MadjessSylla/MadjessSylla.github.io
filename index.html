@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="author" content="Tenen Madyeh Sylla">
+<meta property="og:title" content="Tenen Madyeh Sylla · Développeuse Full Stack & Designer">
+<meta property="og:description" content="Applications web et mobiles, maquettes UI/UX et identités visuelles. Basée à Bamako, Mali.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/madyeh.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e9ab0'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3ETS%3C/text%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
+<title>Tenen Madyeh Sylla · Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio de Tenen Madyeh Sylla, développeuse full stack et designer basée à Bamako.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: hero en deux colonnes (texte + fenêtre d'éditeur), puis sections sur une grille 12 col, frise verticale pour le parcours */
+:root{
+  --bg:#f3f8f9;
+  --surface:#ffffff;
+  --surface-2:#e6f2f4;
+  --fg:#0d2a31;
+  --muted:#4d6b72;
+  --line:#cfe2e6;
+  --accent:#0e9ab0;
+  --accent-ink:#06707f;
+  --accent-soft:#c9eef3;
+  --coral:#ff7a59;
+  --on-accent:#ffffff;
+  --code-bg:#0d2a31;
+  --code-fg:#d7f3f7;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --r:18px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#071a1f; --surface:#0d252c; --surface-2:#113038; --fg:#e4f5f8; --muted:#94b6bd;
+    --line:#1d424b; --accent:#2cc4d9; --accent-ink:#6fdeec; --accent-soft:#103e47; --coral:#ff8f73;
+    --on-accent:#04191d; --code-bg:#03131a; --code-fg:#cdeff4; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#071a1f; --surface:#0d252c; --surface-2:#113038; --fg:#e4f5f8; --muted:#94b6bd;
+  --line:#1d424b; --accent:#2cc4d9; --accent-ink:#6fdeec; --accent-soft:#103e47; --coral:#ff8f73;
+  --on-accent:#04191d; --code-bg:#03131a; --code-fg:#cdeff4; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16.5px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{font-family:var(--display);font-weight:800;font-size:22px;text-decoration:none;display:flex;align-items:center;gap:10px}
+@media (max-width:420px){.logo{font-size:17px}}
+.logo i{flex:none;width:34px;height:34px;border-radius:11px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-style:normal;font-size:15px;letter-spacing:.02em}
+.links{display:flex;gap:4px;align-items:center}
+.links a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;border-radius:99px;color:var(--muted);transition:.2s}
+.links a:hover{color:var(--fg);background:var(--surface-2)}
+.tools{display:flex;gap:8px;align-items:center}
+.icon-btn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;display:grid;place-items:center;transition:.2s}
+.icon-btn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.burger{display:none}
+@media (max-width:1120px){
+  .burger{display:grid}
+  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px max(20px,env(safe-area-inset-right,0px)) 16px max(20px,env(safe-area-inset-left,0px))}
+  .links a{padding:12px 14px;font-size:17px}
+}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:16px;padding:14px 22px;border-radius:14px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:var(--body);transition:transform .2s, box-shadow .2s, background .2s}
+.btn-primary{background:var(--accent);color:var(--on-accent);box-shadow:0 10px 24px -10px var(--accent)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px var(--accent)}
+.btn-ghost{border-color:var(--line);background:var(--surface);color:var(--fg)}
+.btn-ghost:hover{border-color:var(--accent);transform:translateY(-2px)}
+
+/* HERO */
+.hero{position:relative;padding-block:72px 64px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none;z-index:0}
+.blob.a{width:420px;height:420px;background:var(--accent-soft);top:-120px;right:-80px;animation:float 14s ease-in-out infinite}
+.blob.b{width:280px;height:280px;background:color-mix(in srgb,var(--coral) 35%,transparent);bottom:-90px;left:-60px;animation:float 18s ease-in-out infinite reverse}
+@keyframes float{50%{transform:translate(30px,40px) scale(1.08)}}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero-grid>*{min-width:0}
+[hidden]{display:none!important}
+@media (max-width:520px){.cta .btn{flex:1 1 100%;justify-content:center}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stats span{font-size:13px;line-height:1.3}.about-text{padding:24px}.skill-card,.col,form{padding:22px}.proj-body{padding:20px}.head{margin-bottom:32px}section.block{padding-block:72px 0}.contact{margin-top:72px;border-radius:24px}}
+@media (max-width:420px){.hero h1{font-size:42px}.stats{gap:20px}.stats strong{font-size:28px}.ed-body{font-size:12.5px;padding:18px 16px 20px}.sticker{font-size:12.5px;padding:8px 11px}.status{font-size:13px}}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;padding:7px 14px 7px 10px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.status b{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 #22c55e;animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-size:clamp(46px,7.4vw,92px);font-weight:800;letter-spacing:-.035em;margin:22px 0 18px}
+.hero h1 .hl{color:var(--accent);position:relative;white-space:nowrap}
+.hero h1 .hl{background:linear-gradient(transparent 64%,var(--accent-soft) 64%,var(--accent-soft) 92%,transparent 92%);padding:0 .06em}
+.role{font-family:var(--mono);font-size:clamp(16px,2vw,19px);color:var(--muted);min-height:1.6em}
+.role .typed{color:var(--fg);font-weight:500}
+.role .caret{display:inline-block;width:2px;height:1.1em;background:var(--coral);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .lead{max-width:540px;margin:20px 0 32px;font-size:18px;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:44px;padding-top:28px;border-top:1px dashed var(--line)}
+.stats div{display:flex;flex-direction:column}
+.stats strong{font-family:var(--display);font-size:34px;font-weight:800;line-height:1}
+.stats span{font-size:14px;color:var(--muted);margin-top:6px}
+
+/* editor card */
+.editor{background:var(--code-bg);color:var(--code-fg);border-radius:22px;box-shadow:0 30px 60px -30px rgba(6,60,70,.6);font-family:var(--mono);font-size:14px;overflow:hidden;transform:rotate(1.5deg);transition:transform .5s}
+.editor:hover{transform:rotate(0) translateY(-4px)}
+.ed-bar{display:flex;align-items:center;gap:7px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ed-bar i{width:11px;height:11px;border-radius:50%;background:#ff6b6b}
+.ed-bar i:nth-child(2){background:#ffd166}.ed-bar i:nth-child(3){background:#2fd38a}
+.ed-bar span{margin-left:10px;opacity:.6;font-size:12.5px}
+.ed-body{padding:20px 22px 24px;line-height:1.85;overflow-x:auto;white-space:pre}
+.k{color:#ff9f86}.s{color:#7fe3c4}.p{color:#7dd9ea}.c{color:#6c8d94}
+.sticker{position:absolute;font-family:var(--display);font-weight:700;font-size:14px;padding:10px 14px;border-radius:14px;background:var(--surface);color:var(--fg);border:1px solid var(--line);box-shadow:0 12px 24px -14px rgba(0,0,0,.35);display:flex;align-items:center;gap:8px}
+.sticker.s1{top:-18px;left:-22px;transform:rotate(-6deg)}
+.sticker.s2{bottom:-20px;right:-10px;transform:rotate(4deg)}
+.sticker em{font-style:normal;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink);font-size:12px}
+.visual{position:relative}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .editor{transform:none}
+  .sticker.s1{left:6px}.sticker.s2{right:6px}
+}
+
+/* MARQUEE */
+.marquee{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;padding-block:16px}
+.track{display:flex;gap:44px;width:max-content;animation:scroll 32s linear infinite;font-family:var(--display);font-weight:600;font-size:22px;color:var(--muted)}
+.track span{display:flex;align-items:center;gap:44px}
+.track span::after{content:"/";color:var(--accent);font-family:var(--mono);font-weight:400;font-size:22px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section.block{padding-block:96px 0}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--coral)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.head h2{font-size:clamp(34px,5vw,56px);font-weight:800;letter-spacing:-.03em;margin-top:14px}
+.head p{max-width:420px;color:var(--muted)}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+.portrait{border-radius:26px;background:linear-gradient(150deg,var(--accent),var(--accent-ink));min-height:380px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:28px;color:var(--on-accent)}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,30,36,.55),transparent 40%)}
+.portrait p{z-index:1}
+.portrait p{position:relative;display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:700;background:#ffffff;color:#06707f;padding:9px 16px 9px 12px;border-radius:99px;box-shadow:0 10px 24px -10px rgba(0,0,0,.45)}
+.portrait p::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff7a59;flex:none}
+.about-text{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:36px;display:flex;flex-direction:column;gap:22px;min-width:0}
+.about-text .big{font-family:var(--display);font-size:clamp(22px,2.6vw,30px);font-weight:600;line-height:1.3;letter-spacing:-.01em}
+.about-text .big mark{background:var(--accent-soft);color:inherit;padding:0 6px;border-radius:6px}
+.traits{display:flex;flex-wrap:wrap;gap:10px}
+.traits span{padding:8px 14px;border-radius:99px;border:1px solid var(--line);font-size:14.5px;font-weight:500}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:auto}
+.facts div{background:var(--surface-2);border-radius:14px;padding:14px 16px}
+.facts small{display:block;font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.facts b{font-weight:600}
+@media (max-width:860px){.about{grid-template-columns:1fr}.portrait{min-height:420px}.facts{grid-template-columns:1fr}}
+
+/* SKILLS */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.skill-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;transition:.3s}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.skill-card h3{font-size:22px;font-weight:700;display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.skill-card h3 em{font-style:normal;width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center}
+.bar{margin-bottom:16px}
+.bar:last-child{margin-bottom:0}
+.bar div{display:flex;justify-content:space-between;font-weight:600;font-size:15px;margin-bottom:7px}
+.bar div span{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-weight:400}
+.bar u{display:block;height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden;text-decoration:none}
+.bar u i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--accent),var(--accent-ink));width:var(--w);animation:grow 1.4s cubic-bezier(.2,.8,.2,1)}
+@keyframes grow{from{width:0}}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{padding:9px 14px;border-radius:12px;background:var(--surface-2);font-weight:600;font-size:15px}
+@media (max-width:900px){.skills{grid-template-columns:1fr}}
+
+/* PROJECTS */
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{font-family:var(--body);font-weight:600;font-size:14.5px;padding:9px 16px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;transition:.2s}
+.filters button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:.35s}
+.proj:hover{transform:translateY(-6px);box-shadow:0 30px 50px -34px rgba(6,60,70,.55)}
+.shot{aspect-ratio:16/10;max-width:100%;position:relative;overflow:hidden;display:grid;place-items:center;padding:26px}
+.shot.t1{background:linear-gradient(135deg,#0e9ab0,#0a5f6e)}
+.shot.t2{background:linear-gradient(135deg,#ff7a59,#e2496a)}
+.shot.t3{background:linear-gradient(135deg,#14324a,#0e9ab0)}
+.shot.t4{background:linear-gradient(135deg,#f2b84b,#ff7a59)}
+.mock{width:88%;background:#fff;border-radius:12px;box-shadow:0 20px 40px -18px rgba(0,0,0,.45);overflow:hidden;transition:transform .5s}
+.proj:hover .mock{transform:scale(1.04) rotate(-1deg)}
+.mock .mb{height:22px;background:#eef4f5;display:flex;gap:5px;align-items:center;padding:0 9px}
+.mock .mb i{width:7px;height:7px;border-radius:50%;background:#c9d8db}
+.mock .mc{padding:14px;display:grid;gap:8px}
+.mock .row{height:9px;border-radius:5px;background:#e3ecee}
+.mock .row.w60{width:60%}.mock .row.w40{width:40%}.mock .row.acc{background:#0e9ab0;width:30%;height:14px}
+.mock .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.mock .tiles i{aspect-ratio:1;border-radius:7px;background:#d6eef2}
+.mock .tiles i:nth-child(2){background:#ffe0d6}
+.phone{width:38%;aspect-ratio:9/18;background:#fff;border-radius:20px;border:5px solid #0d2a31;box-shadow:0 20px 40px -18px rgba(0,0,0,.5);padding:12px 9px;display:grid;gap:7px;align-content:start;transition:transform .5s}
+.proj:hover .phone{transform:translateY(-6px) rotate(3deg)}
+.phone .row{height:8px;border-radius:5px;background:#e3ecee}
+.phone .card{height:44px;border-radius:9px;background:#d6eef2}
+.phone .card.o{background:#ffe0d6}
+.shot.t5{background:linear-gradient(135deg,#1fa855,#0c6b3a)}
+.shot.t6{background:linear-gradient(135deg,#2f6bea,#1a3f9e)}
+.shot.phoneshot{padding:30px 0 0;align-items:start;place-items:start center}
+.shot.phoneshot img{width:min(46%,240px);max-width:100%;filter:drop-shadow(0 24px 30px rgba(0,0,0,.35));transition:transform .5s}
+.proj:hover .phoneshot img{transform:translateY(-10px)}
+
+.shot.phoneshot{cursor:zoom-in;position:relative}
+.zoom-hint{position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:7px 11px;border-radius:99px;background:rgba(255,255,255,.92);color:#0d2a31;pointer-events:none}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(4,18,22,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;padding:calc(24px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));animation:fade .25s ease}
+.lightbox img{max-height:88vh;max-width:100%;width:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.5));animation:pop .3s cubic-bezier(.2,.8,.2,1)}
+.lightbox figcaption{color:#fff;font-family:var(--display);font-weight:700;font-size:20px;text-align:center;margin-top:14px}
+.lightbox figure{margin:0;display:flex;flex-direction:column;align-items:center;max-height:100%}
+.lb-close{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:#0d2a31;font-size:24px;cursor:pointer;display:grid;place-items:center}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{transform:scale(.92)}}
+.shot.t9{background:linear-gradient(135deg,#8a1d22,#3d0b0e)}
+.shot.t8{background:linear-gradient(135deg,#1f7a4f,#0e4a31)}
+.shot.t7{background:linear-gradient(135deg,#f6c5dc,#e86fa8)}
+.shot.webshot{padding:32px;place-items:center}
+.shot.webshot img{width:100%;max-width:560px;border-radius:12px;filter:drop-shadow(0 22px 30px rgba(90,20,50,.35))}
+.proj:hover .webshot img{transform:translateY(-6px) scale(1.02)}
+/* GALLERY */
+.glead{max-width:640px;color:var(--muted);margin:-20px 0 32px}
+.filters button i{font-style:normal;font-family:var(--mono);font-size:12px;opacity:.6;margin-left:4px}
+.gallery{columns:3 280px;column-gap:20px}
+.gitem{break-inside:avoid;margin:0 0 20px;display:flex;flex-direction:column;gap:10px}
+.gbtn{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface);cursor:zoom-in;position:relative}
+.gbtn img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.gbtn:hover img{transform:scale(1.04)}
+.gbtn::after{content:"Agrandir";position:absolute;right:12px;bottom:12px;font-family:var(--body);font-size:13px;font-weight:600;padding:6px 11px;border-radius:99px;background:rgba(255,255,255,.94);color:#0d2a31;opacity:0;transform:translateY(6px);transition:.25s}
+.gbtn:hover::after,.gbtn:focus-visible::after{opacity:1;transform:none}
+.gbtn.glogo{background:#ffffff;padding:28px}
+.gitem figcaption{display:flex;flex-direction:column;padding-inline:4px;line-height:1.35}
+.gitem figcaption b{font-family:var(--display);font-size:17px}
+.gitem figcaption span{font-size:14px;color:var(--muted)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#0d2a31;font-size:22px;cursor:pointer;display:grid;place-items:center;z-index:2}
+.lb-prev{left:max(16px,env(safe-area-inset-left,0px))}.lb-next{right:max(16px,env(safe-area-inset-right,0px))}
+.lb-count{font-family:var(--mono);font-size:13px;color:rgba(255,255,255,.7);margin-top:4px;text-align:center}
+@media (max-width:600px){.lb-nav{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:none}}
+.lightbox.wide img{max-width:min(1200px,100%);max-height:82vh;border-radius:12px}
+.figma{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:86%}
+.figma i{aspect-ratio:3/4;border-radius:10px;background:rgba(255,255,255,.92)}
+.figma i:nth-child(2){transform:translateY(-14px);background:#fff}
+.figma i:nth-child(3){background:rgba(255,255,255,.75)}
+.proj-body{padding:26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.proj-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.proj h3{font-size:24px;font-weight:700;letter-spacing:-.01em}
+.proj p{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.tags span{font-family:var(--mono);font-size:12.5px;padding:5px 10px;border-radius:8px;background:var(--surface-2);color:var(--accent-ink)}
+.proj-links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.proj-links a{font-weight:600;font-size:15px;text-decoration:none;display:flex;align-items:center;gap:6px;color:var(--accent-ink)}
+.proj-links a:hover{text-decoration:underline}
+.proj-links .soon{color:var(--muted);font-size:14px;font-weight:500}
+.proj[data-cat="web"]{grid-column:1/-1;flex-direction:row}
+.proj[data-cat="web"] .shot{flex:1 1 50%;aspect-ratio:auto;min-height:280px}
+.proj[data-cat="web"] .proj-body{flex:1 1 50%;justify-content:center}
+@media (max-width:760px){.proj[data-cat="web"]{flex-direction:column}.proj[data-cat="web"] .shot{aspect-ratio:16/10;min-height:0}}
+@media (max-width:760px){.projects{grid-template-columns:1fr}}
+
+/* TIMELINE */
+.journey{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.col{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px;min-width:0}
+.col h3{font-size:24px;font-weight:700;margin-bottom:26px;display:flex;align-items:center;gap:12px}
+.col h3 em{font-style:normal;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted);border:1px solid var(--line);padding:3px 9px;border-radius:99px}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl li{position:relative;padding-left:34px;padding-bottom:26px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:3px solid var(--accent)}
+.tl li.now::before{background:var(--coral);border-color:var(--coral);box-shadow:0 0 0 5px color-mix(in srgb,var(--coral) 22%,transparent)}
+.tl time{font-family:var(--mono);font-size:13px;color:var(--accent-ink);font-weight:500}
+.tl h4{font-family:var(--display);font-size:19px;font-weight:700;margin:4px 0 2px;line-height:1.25}
+.tl .org{font-size:14.5px;font-weight:600;color:var(--muted)}
+.tl p{font-size:15px;color:var(--muted);margin-top:6px}
+@media (max-width:860px){.journey{grid-template-columns:1fr}.col{padding:24px}}
+
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc{padding:28px 24px;border-radius:22px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:12px;transition:.3s;position:relative;overflow:hidden}
+.svc::after{content:"";position:absolute;inset:auto -40px -40px auto;width:110px;height:110px;border-radius:50%;background:var(--accent-soft);transition:.4s;z-index:0}
+.svc:hover::after{transform:scale(3.4)}
+.svc>*{position:relative;z-index:1}
+.svc em{font-style:normal;width:48px;height:48px;border-radius:14px;background:var(--fg);color:var(--bg);display:grid;place-items:center}
+.svc h3{font-size:20px;font-weight:700}
+.svc p{font-size:15px;color:var(--muted)}
+@media (max-width:980px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.services{grid-template-columns:1fr}}
+
+/* LANG + HOBBIES */
+.extras{display:grid;grid-template-columns:1.3fr .7fr;gap:24px}
+.langs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.lang{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lang b{font-family:var(--display);font-size:19px}
+.dots{display:flex;gap:5px}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--surface-2)}
+.dots i.on{background:var(--accent)}
+.lang small{display:block;font-size:13px;color:var(--muted)}
+.hobbies{background:var(--fg);color:var(--bg);border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.hobbies h3{font-size:22px}
+.hobbies div{display:flex;flex-wrap:wrap;gap:8px}
+.hobbies span{padding:9px 14px;border-radius:99px;border:1px solid color-mix(in srgb,var(--bg) 30%,transparent);font-weight:500}
+@media (max-width:860px){.extras{grid-template-columns:1fr}}
+@media (max-width:480px){.langs{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact{margin-top:96px;background:linear-gradient(140deg,var(--accent),var(--accent-ink));color:var(--on-accent);border-radius:32px;padding:clamp(28px,5vw,60px);display:grid;grid-template-columns:1fr 1fr;gap:44px;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;border:60px solid rgba(255,255,255,.07);top:-160px;right:-120px}
+.contact>*{position:relative;min-width:0}
+.contact h2{font-size:clamp(36px,5vw,60px);font-weight:800;letter-spacing:-.03em}
+.contact .sub{margin:16px 0 30px;opacity:.88;font-size:17px;max-width:420px}
+.cinfo{display:flex;flex-direction:column;gap:12px}
+.cline{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:12px 14px}
+.cline svg{flex:none}
+.cline span{flex:1;font-weight:600;user-select:all;overflow-wrap:anywhere;min-width:0}
+.cline button{font-family:var(--body);font-size:13px;font-weight:600;border:0;border-radius:9px;padding:7px 11px;background:rgba(255,255,255,.92);color:#06707f;cursor:pointer}
+form{background:var(--surface);color:var(--fg);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:14px}
+form h3{font-size:22px}
+label{font-size:14px;font-weight:600;display:flex;flex-direction:column;gap:6px}
+input,textarea{font-family:var(--body);font-size:16px;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);transition:.2s;width:100%}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+textarea{min-height:120px;resize:vertical}
+.form-note{font-size:13px;color:var(--muted)}
+.wa-btn{background:#1fa855;color:#fff;justify-content:center;box-shadow:none}
+.wa-btn:hover{transform:translateY(-2px)}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+
+footer{padding-block:40px 48px;color:var(--muted);font-size:14.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer a{text-decoration:none;font-weight:600;color:var(--fg)}
+
+.reveal{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+</head>
+<body>
+<nav class="nav" aria-label="Navigation principale">
+  <div class="wrap" style="position:relative">
+    <a href="#top" class="logo"><i>TS</i>Tenen Madyeh Sylla</a>
+    <div class="links" id="links">
+      <a href="#apropos">À propos</a>
+      <a href="#competences">Compétences</a>
+      <a href="#projets">Projets</a>
+      <a href="#graphisme">Graphisme</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="tools">
+      <button class="icon-btn" id="theme" aria-label="Changer de thème">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="blob a"></div><div class="blob b"></div>
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="status"><b></b>Disponible pour un emploi et des missions freelance</span>
+      <h1>Je suis <span class="hl">Madyeh</span>.</h1>
+      <p class="role">&gt; <span class="typed" id="typed">Développeuse Full Stack</span><span class="caret"></span></p>
+      <p class="lead">Je conçois et je code des applications web et mobiles, de la maquette Figma jusqu'à la mise en ligne. Basée à Bamako, je travaille avec Angular, Spring Boot et Flutter.</p>
+      <div class="cta">
+        <a href="#projets" class="btn btn-primary">Voir mes projets
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+      </div>
+      <div class="stats">
+        <div><strong>3</strong><span>stages en entreprise</span></div>
+        <div><strong>12+</strong><span>technologies</span></div>
+        <div><strong>4</strong><span>langues parlées</span></div>
+      </div>
+    </div>
+    <div class="visual reveal" style="animation-delay:.15s">
+      <div class="editor" aria-hidden="true">
+        <div class="ed-bar"><i></i><i></i><i></i></div>
+<div class="ed-body"><span class="k">const</span> madyeh = {
+  role: <span class="s">'Full Stack & Designer'</span>,
+  ville: <span class="s">'Bamako, Mali'</span>,
+  front: [<span class="s">'Angular'</span>, <span class="s">'Flutter'</span>],
+  back:  [<span class="s">'Spring Boot'</span>, <span class="s">'Java'</span>],
+  design: [<span class="s">'Figma'</span>, <span class="s">'Canva'</span>],
+  <span class="p">disponible</span>: <span class="k">true</span>,
+};
+<span class="c">// Orange Digital Center Mali, 2025</span></div>
+      </div>
+      <div class="sticker s1"><em>✓</em>Certifiée Full Stack</div>
+      <div class="sticker s2"><em>✎</em>UI/UX sur Figma</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Angular</span><span>Spring Boot</span><span>Flutter</span><span>Java</span><span>Python</span><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Figma</span><span>GitHub</span><span>Canva</span>
+    <span>Angular</span><span>Spring Boot</span><span>Flutter</span><span>Java</span><span>Python</span><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Figma</span><span>GitHub</span><span>Canva</span>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section class="block" id="apropos">
+  <div class="head"><div><span class="eyebrow">À propos</span><h2>Le code et le design, ensemble.</h2></div></div>
+  <div class="about">
+    <div class="portrait">
+      <img src="img/madyeh.webp" alt="Photo de Tenen Madyeh Sylla">
+      <p>Tenen Madyeh Sylla · Bamako</p>
+    </div>
+    <div class="about-text">
+      <p class="big">Je suis développeuse full stack et je travaille aussi en <mark>freelance</mark>. J'aime construire des produits <mark>utiles et soignés</mark>, où l'interface est aussi réfléchie que le code.</p>
+      <p style="color:var(--muted)">Efficace, dotée d'un bon esprit d'équipe et attentive aux détails, je suis très motivée et engagée dans chaque projet. Ma double casquette de développeuse et de designer me permet de suivre un produit de la première maquette jusqu'au déploiement chez le client.</p>
+      <div class="traits"><span>Esprit d'équipe</span><span>Souci du détail</span><span>Autonome</span><span>Curieuse</span></div>
+      <div class="facts">
+        <div><small>Basée à</small><b>Sirakoro, Bamako</b></div>
+        <div><small>Diplôme</small><b>Licence en génie informatique</b></div>
+        <div><small>Statut</small><b>Disponible</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="competences">
+  <div class="head"><div><span class="eyebrow">Compétences</span><h2>Ma boîte à outils</h2></div><p>Du back-end en Java à l'interface mobile, en passant par la maquette.</p></div>
+  <div class="skills">
+    <div class="skill-card">
+      <h3><em><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></em>Front-end</h3>
+      <div class="bar"><div>HTML5<span>Avancé</span></div><u><i style="--w:96%"></i></u></div>
+      <div class="bar"><div>CSS3<span>Avancé</span></div><u><i style="--w:94%"></i></u></div>
+      <div class="bar"><div>Angular<span>Confirmé</span></div><u><i style="--w:72%"></i></u></div>
+      <div class="bar"><div>JavaScript<span>Confirmé</span></div><u><i style="--w:74%"></i></u></div>
+      <div class="bar"><div>Flutter<span>Intermédiaire</span></div><u><i style="--w:58%"></i></u></div>
+    </div>
+    <div class="skill-card">
+      <h3><em><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/></svg></em>Back-end</h3>
+      <div class="bar"><div>Java<span>Confirmé</span></div><u><i style="--w:72%"></i></u></div>
+      <div class="bar"><div>Spring Boot<span>Confirmé</span></div><u><i style="--w:72%"></i></u></div>
+      <div class="bar"><div>Python<span>Intermédiaire</span></div><u><i style="--w:58%"></i></u></div>
+      <div class="bar"><div>PHP · MySQL<span>Confirmé</span></div><u><i style="--w:74%"></i></u></div>
+    </div>
+    <div class="skill-card">
+      <h3><em><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="12" r="2.5"/><circle cx="13.5" cy="17.5" r="2.5"/><path d="M19 12h2"/></svg></em>Design & outils</h3>
+      <div class="bar"><div>Figma<span>Confirmé</span></div><u><i style="--w:74%"></i></u></div>
+      <div class="bar"><div>Git · GitHub<span>Confirmé</span></div><u><i style="--w:72%"></i></u></div>
+      <p style="font-size:14px;color:var(--muted);margin:20px 0 12px">Aussi à l'aise avec</p>
+      <div class="chips"><span>Canva</span><span>CapCut</span><span>VN</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projets">
+  <div class="head"><div><span class="eyebrow">Projets</span><h2>Ce que j'ai construit</h2></div>
+    <div class="filters" role="group" aria-label="Filtrer les projets">
+      <button aria-pressed="true" data-f="all">Tous</button>
+      <button aria-pressed="false" data-f="web">Web</button>
+      <button aria-pressed="false" data-f="mobile">Mobile</button>
+      <button aria-pressed="false" data-f="design">Design</button>
+    </div>
+  </div>
+  <div class="projects" id="projects">
+    <article class="proj" data-cat="web">
+      <div class="shot t9 phoneshot webshot"><img src="img/ecours.webp" alt="Page de connexion de la plateforme d'e-learning de l'Université Privée Mary Saint Claire" loading="lazy"></div>
+      <div class="proj-body">
+        <div class="proj-meta"><span>Projet de fin d'études</span><span>2021 – 2022</span></div>
+        <h3>Plateforme de cours en ligne</h3>
+        <p>Plateforme d'e-learning conçue et développée pour l'Université Privée Mary Saint Claire. Chaque utilisateur se connecte à son espace : les étudiants suivent leurs cours en ligne, les enseignants publient leurs contenus et l'administration gère les comptes et les formations.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span></div>
+        <div class="proj-links"><a href="#contact">Demander une démo →</a></div>
+      </div>
+    </article>
+    <article class="proj" data-cat="mobile">
+      <div class="shot t5 phoneshot"><img src="img/fasodocs.webp" alt="Écran d'accueil de l'application FasoDocs" loading="lazy"></div>
+      <div class="proj-body">
+        <div class="proj-meta"><span>Application mobile</span><span>Android · iOS</span></div>
+        <h3>FasoDocs</h3>
+        <p>Une application qui simplifie les démarches administratives au Mali : recherche de procédures, assistant visa, démarches populaires, quiz, communiqués officiels, assistant intégré pour répondre aux questions et traduction de l'interface en audio bambara.</p>
+        <div class="tags"><span>Flutter</span><span>Mobile</span><span>UI/UX</span></div>
+        <div class="proj-links"><a href="https://youtube.com/shorts/VnqYY1CJAMk" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Voir la vidéo démo ↗</a><a href="https://www.figma.com/design/Ma1YODmrMnVeWBf1eoGw6G/Figma-FasoDocs?node-id=0-1&amp;p=f" target="_blank" rel="noopener">Voir la maquette Figma ↗</a></div>
+      </div>
+    </article>
+    <article class="proj" data-cat="mobile">
+      <div class="shot t6 phoneshot"><img src="img/ondesafe.webp" alt="Tableau de bord de l'application OndeSafe" loading="lazy"></div>
+      <div class="proj-body">
+        <div class="proj-meta"><span>Application mobile</span><span>Orange Summer Challenge 2026</span></div>
+        <h3>OndeSafe</h3>
+        <p>Une application de surveillance des personnes et des biens basée sur les signaux Wi-Fi : détection de chutes, d'intrusions et de mouvements suspects, alertes en temps réel et suivi pièce par pièce.</p>
+        <div class="tags"><span>Flutter</span><span>Temps réel</span><span>UI/UX</span></div>
+        <div class="proj-links"><a href="https://www.figma.com/design/ATlMjOTxTRmOpyaiHdlCHG/OndeSafe_new?node-id=0-1&amp;p=f" target="_blank" rel="noopener">Voir la maquette Figma ↗</a><a href="#contact">Demander une démo →</a></div>
+      </div>
+    </article>
+    <article class="proj" data-cat="mobile">
+      <div class="shot t8 phoneshot"><img src="img/hajj.webp" alt="Écran de démarrage de l'application Hajj &amp; Oumra" loading="lazy"></div>
+      <div class="proj-body">
+        <div class="proj-meta"><span>Application mobile</span><span>Bambara · Français</span></div>
+        <h3>Hajj &amp; Oumra</h3>
+        <p>Un compagnon de pèlerinage pensé pour les Maliens : guide des rites avec audio en bambara disponible hors ligne, carte interactive des lieux saints avec géolocalisation, Coran et invocations, assistant vocal, réservation de billets d'avion et boutique en ligne de livres religieux, tenues pour le Hajj et l'Oumra et accessoires du pèlerin.</p>
+        <div class="tags"><span>Figma</span><span>UI/UX</span><span>Mobile</span><span>Audio</span></div>
+        <div class="proj-links"><a href="https://www.figma.com/design/FozPHJSTezXNB4vwo4dxsS/Hajj-Oumra?node-id=0-1&amp;p=f" target="_blank" rel="noopener">Voir la maquette Figma ↗</a><a href="#contact">Demander une démo →</a></div>
+      </div>
+    </article>
+    <article class="proj" data-cat="design">
+      <div class="shot t7 phoneshot webshot"><img src="img/soymejor.webp" alt="Page d'accueil de la boutique en ligne Soy Mejor" loading="lazy"></div>
+      <div class="proj-body">
+        <div class="proj-meta"><span>Maquette web · Figma</span><span>E-commerce</span></div>
+        <h3>Soy Mejor</h3>
+        <p>Maquette complète d'une boutique de mode en ligne : abayas, voiles, robes, parfums et muscs. Le parcours couvre l'accueil, les catégories, la fiche produit avec avis, la liste de souhaits, le panier et la commande, ainsi que l'inscription et la connexion.</p>
+        <div class="tags"><span>Figma</span><span>UI/UX</span><span>E-commerce</span><span>Desktop</span></div>
+        <div class="proj-links"><a href="https://www.figma.com/design/z6imqKvT8EDkitkbllY1zn/soymejor?node-id=0-1&amp;p=f" target="_blank" rel="noopener">Voir la maquette Figma ↗</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="graphisme">
+  <div class="head"><div><span class="eyebrow">Graphisme</span><h2>Affiches, logos et identités</h2></div>
+    <div class="filters gfilters" role="group" aria-label="Filtrer les créations">
+      <button aria-pressed="true" data-f="all">Tout <i>17</i></button>
+      <button aria-pressed="false" data-f="affiches">Affiches <i>7</i></button>
+      <button aria-pressed="false" data-f="logos">Logos <i>4</i></button>
+      <button aria-pressed="false" data-f="textile">Packaging & textile <i>6</i></button>
+    </div>
+  </div>
+  <p class="glead">Des créations réalisées pour des entreprises de Bamako : communication commerciale, identités de marque et supports promotionnels. Cliquez sur une image pour la voir en grand.</p>
+  <div class="gallery" id="gallery">
+      <figure class="gitem" data-cat="affiches"><button type="button" class="gbtn" aria-label="Agrandir : GlobalFinds – Affiche « Nouveaux articles »"><img src="img/g/gf-articles.webp" alt="GlobalFinds – Affiche « Nouveaux articles »" loading="lazy"></button><figcaption><b>GlobalFinds</b><span>Affiche « Nouveaux articles »</span></figcaption></figure>
+      <figure class="gitem" data-cat="logos"><button type="button" class="gbtn glogo" aria-label="Agrandir : Al Ālam – Logo · industrie, hydraulique et lubrifiants"><img src="img/g/logo-alalam.webp" alt="Al Ālam – Logo · industrie, hydraulique et lubrifiants" loading="lazy"></button><figcaption><b>Al Ālam</b><span>Logo · industrie, hydraulique et lubrifiants</span></figcaption></figure>
+      <figure class="gitem" data-cat="textile"><button type="button" class="gbtn" aria-label="Agrandir : Double Seven – T-shirt promotionnel, dos"><img src="img/g/ds-dos.webp" alt="Double Seven – T-shirt promotionnel, dos" loading="lazy"></button><figcaption><b>Double Seven</b><span>T-shirt promotionnel, dos</span></figcaption></figure>
+      <figure class="gitem" data-cat="affiches"><button type="button" class="gbtn" aria-label="Agrandir : OndeSafe – Flyer Orange Summer Challenge 2026"><img src="img/g/os-flyer.webp" alt="OndeSafe – Flyer Orange Summer Challenge 2026" loading="lazy"></button><figcaption><b>OndeSafe</b><span>Flyer Orange Summer Challenge 2026</span></figcaption></figure>
+      <figure class="gitem" data-cat="textile"><button type="button" class="gbtn" aria-label="Agrandir : PAP'S Soda – Visuel de la gamme, six parfums"><img src="img/g/paps-gamme.webp" alt="PAP'S Soda – Visuel de la gamme, six parfums" loading="lazy"></button><figcaption><b>PAP'S Soda</b><span>Visuel de la gamme, six parfums</span></figcaption></figure>
+      <figure class="gitem" data-cat="affiches"><button type="button" class="gbtn" aria-label="Agrandir : GlobalFinds – Story Octobre rose"><img src="img/g/gf-octobre.webp" alt="GlobalFinds – Story Octobre rose" loading="lazy"></button><figcaption><b>GlobalFinds</b><span>Story Octobre rose</span></figcaption></figure>
+      <figure class="gitem" data-cat="logos"><button type="button" class="gbtn" aria-label="Agrandir : Trésor by Coumba – Logo · encens et parfums"><img src="img/g/logo-tresor.webp" alt="Trésor by Coumba – Logo · encens et parfums" loading="lazy"></button><figcaption><b>Trésor by Coumba</b><span>Logo · encens et parfums</span></figcaption></figure>
+      <figure class="gitem" data-cat="affiches"><button type="button" class="gbtn" aria-label="Agrandir : GlobalFinds – Annonce du service de pesée"><img src="img/g/gf-poids.webp" alt="GlobalFinds – Annonce du service de pesée" loading="lazy"></button><figcaption><b>GlobalFinds</b><span>Annonce du service de pesée</span></figcaption></figure>
+      <figure class="gitem" data-cat="textile"><button type="button" class="gbtn" aria-label="Agrandir : PAP'S – T-shirt des jus Ananas, Orange et Chapman"><img src="img/g/paps-rouge.webp" alt="PAP'S – T-shirt des jus Ananas, Orange et Chapman" loading="lazy"></button><figcaption><b>PAP'S</b><span>T-shirt des jus Ananas, Orange et Chapman</span></figcaption></figure>
+      <figure class="gitem" data-cat="logos"><button type="button" class="gbtn glogo" aria-label="Agrandir : OndeSafe – Logo et signature"><img src="img/g/logo-ondesafe.webp" alt="OndeSafe – Logo et signature" loading="lazy"></button><figcaption><b>OndeSafe</b><span>Logo et signature</span></figcaption></figure>
+      <figure class="gitem" data-cat="affiches"><button type="button" class="gbtn" aria-label="Agrandir : GlobalFinds – Affiche « Achat groupé de vaisselle »"><img src="img/g/gf-achat.webp" alt="GlobalFinds – Affiche « Achat groupé de vaisselle »" loading="lazy"></button><figcaption><b>GlobalFinds</b><span>Affiche « Achat groupé de vaisselle »</span></figcaption></figure>
+      <figure class="gitem" data-cat="textile"><button type="button" class="gbtn" aria-label="Agrandir : Double Seven – T-shirt promotionnel, face"><img src="img/g/ds-face.webp" alt="Double Seven – T-shirt promotionnel, face" loading="lazy"></button><figcaption><b>Double Seven</b><span>T-shirt promotionnel, face</span></figcaption></figure>
+      <figure class="gitem" data-cat="affiches"><button type="button" class="gbtn" aria-label="Agrandir : OndeSafe – Kakémono de présentation"><img src="img/g/os-rollup.webp" alt="OndeSafe – Kakémono de présentation" loading="lazy"></button><figcaption><b>OndeSafe</b><span>Kakémono de présentation</span></figcaption></figure>
+      <figure class="gitem" data-cat="textile"><button type="button" class="gbtn" aria-label="Agrandir : PAP'S – T-shirt des jus Tamarin, Ananas-Coco et Pomme"><img src="img/g/paps-orange.webp" alt="PAP'S – T-shirt des jus Tamarin, Ananas-Coco et Pomme" loading="lazy"></button><figcaption><b>PAP'S</b><span>T-shirt des jus Tamarin, Ananas-Coco et Pomme</span></figcaption></figure>
+      <figure class="gitem" data-cat="logos"><button type="button" class="gbtn glogo" aria-label="Agrandir : Petro Univers – Logo · pétrole et hydraulique"><img src="img/g/logo-petro.webp" alt="Petro Univers – Logo · pétrole et hydraulique" loading="lazy"></button><figcaption><b>Petro Univers</b><span>Logo · pétrole et hydraulique</span></figcaption></figure>
+      <figure class="gitem" data-cat="affiches"><button type="button" class="gbtn" aria-label="Agrandir : GlobalFinds – Affiche « Comment passer commande »"><img src="img/g/gf-commande.webp" alt="GlobalFinds – Affiche « Comment passer commande »" loading="lazy"></button><figcaption><b>GlobalFinds</b><span>Affiche « Comment passer commande »</span></figcaption></figure>
+      <figure class="gitem" data-cat="textile"><button type="button" class="gbtn" aria-label="Agrandir : PAP'S Soda – T-shirt des sodas Lemon-Lime, Cola et Tonic"><img src="img/g/paps-blanc.webp" alt="PAP'S Soda – T-shirt des sodas Lemon-Lime, Cola et Tonic" loading="lazy"></button><figcaption><b>PAP'S Soda</b><span>T-shirt des sodas Lemon-Lime, Cola et Tonic</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="block" id="parcours">
+  <div class="head"><div><span class="eyebrow">Parcours</span><h2>Expériences et formations</h2></div></div>
+  <div class="journey">
+    <div class="col">
+      <h3>Expérience <em>5 expériences</em></h3>
+      <ol class="tl">
+        <li class="now"><time>2026 · 3 mois</time><h4>Développeuse Full Stack & Designer</h4><div class="org">Orange Summer Challenge · Orange Digital Center Mali</div><p>Stage au sein du programme d'innovation d'Orange : conception et développement d'OndeSafe, solution de surveillance par Wi-Fi, de la maquette Figma à l'application mobile, avec la création de l'identité visuelle et des supports de présentation.</p></li>
+        <li><time>2026 · Freelance</time><h4>Créatrice de contenu</h4><div class="org">GlobalFinds SARL · Bamako</div><p>Conception des visuels de communication de l'entreprise : affiches de nouveaux produits, annonces de services, campagnes d'achat groupé et stories pour les réseaux sociaux. <a href="#graphisme" style="color:var(--accent-ink);font-weight:600">Voir les créations →</a></p></li>
+        <li><time>2022 – 2023</time><h4>Stagiaire en gestion des systèmes d'information</h4><div class="org">EGITCOM · ACI 2000</div><p>Gestion du site e-commerce de l'entreprise, configuration et déploiement du site chez le client.</p></li>
+        <li><time>2021 – 2022</time><h4>Projet de fin d'études</h4><div class="org">Université Privée Mary Saint Claire</div><p>Mise en place d'une plateforme de cours en ligne avec HTML, CSS, PHP, MySQL et JavaScript.</p></li>
+        <li><time>2019 – 2020</time><h4>Stagiaire en assistance informatique</h4><div class="org">ATCHIMA · ACI 2000</div><p>Gestion des transferts d'argent entre le Mali et le Canada et relation client via WhatsApp Business.</p></li>
+      </ol>
+    </div>
+    <div class="col">
+      <h3>Formation <em>5 formations</em></h3>
+      <ol class="tl">
+        <li class="now"><time>2026</time><h4>Création de contenu (CapCut, VN)</h4><div class="org">Orange Digital Center Mali</div></li>
+        <li><time>Fév. – Déc. 2025</time><h4>Certification en développement Full Stack (web et mobile)</h4><div class="org">Orange Digital Center Mali</div></li>
+        <li><time>2023</time><h4>Design graphique avec Canva</h4><div class="org">Orange Digital Center Mali</div></li>
+        <li><time>2021 – 2022</time><h4>Licence en Génie Informatique</h4><div class="org">Université Privée Mary Saint Claire</div></li>
+        <li><time>2018 – 2019</time><h4>Baccalauréat Sciences Exactes</h4><div class="org">Lycée Privé Carnot</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="services">
+  <div class="head"><div><span class="eyebrow">Freelance</span><h2>Ce que je peux faire pour vous</h2></div><p>Un interlocuteur unique pour la maquette, le développement et la mise en ligne.</p></div>
+  <div class="services">
+    <div class="svc"><em><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></em><h3>Sites web</h3><p>Sites vitrines, e-commerce et applications web sur mesure, rapides et adaptés au mobile.</p></div>
+    <div class="svc"><em><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></em><h3>Apps mobiles</h3><p>Applications Android et iOS avec Flutter, à partir d'une seule base de code.</p></div>
+    <div class="svc"><em><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></em><h3>Design UI/UX</h3><p>Maquettes et prototypes cliquables sur Figma, pensés pour vos utilisateurs.</p></div>
+    <div class="svc"><em><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></em><h3>Contenu visuel</h3><p>Visuels pour les réseaux sociaux sur Canva et vidéos courtes avec CapCut.</p></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="extras">
+    <div>
+      <span class="eyebrow">Langues</span>
+      <div class="langs" style="margin-top:20px">
+        <div class="lang"><div><b>Français</b><small>Courant, écrit et oral</small></div><div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+        <div class="lang"><div><b>Bambara</b><small>Courant</small></div><div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+        <div class="lang"><div><b>Anglais</b><small>Niveau scolaire</small></div><div class="dots"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+        <div class="lang"><div><b>Espagnol</b><small>Niveau scolaire</small></div><div class="dots"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+      </div>
+    </div>
+    <div class="hobbies">
+      <span class="eyebrow" style="color:inherit">En dehors du code</span>
+      <h3>Ce qui me ressource</h3>
+      <div><span>Lecture</span><span>Voyage</span><span>Sport</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div>
+    <span class="eyebrow" style="color:inherit">Contact</span>
+    <h2 style="margin-top:14px">Travaillons ensemble.</h2>
+    <p class="sub">Un projet, une offre d'emploi ou une simple question ? Écrivez-moi, je réponds rapidement.</p>
+    <div class="cinfo">
+      <div class="cline"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span id="mail">madyehsylla427@gmail.com</span><button data-copy="mail">Copier</button></div>
+      <div class="cline"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span id="tel">+223 74 32 38 74</span><button data-copy="tel">Copier</button></div>
+      <div class="cline"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Sirakoro, Bamako, Mali</span></div>
+    </div>
+  </div>
+  <form id="form">
+    <h3>Envoyer un message</h3>
+    <label for="nom">Votre nom<input id="nom" required placeholder="Awa Traoré"></label>
+    <label for="msg">Votre message<textarea id="msg" required placeholder="Bonjour Madyeh, j'ai un projet de site web…"></textarea></label>
+    <button class="btn wa-btn" type="submit">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8a11 11 0 0 1-4.3-3.8c-.4-.5-1-1.5-1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6-.1l.8-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>
+      Envoyer sur WhatsApp</button>
+    <p class="form-note">Le message s'ouvre dans WhatsApp, prêt à être envoyé.</p>
+  </form>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Tenen Madyeh Sylla · Développeuse Full Stack & Designer</span>
+    <a href="#top">Retour en haut ↑</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Aperçu de l'image">
+  <button class="lb-close" id="lbClose" aria-label="Fermer">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Image précédente" hidden>‹</button>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption><div class="lb-count" id="lbCount"></div></figure>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Image suivante" hidden>›</button>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement;
+  try{const t=localStorage.getItem('theme');if(t)root.dataset.theme=t;}catch(e){}
+  document.getElementById('theme').addEventListener('click',()=>{
+    const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme=dark?'light':'dark';
+    try{localStorage.setItem('theme',root.dataset.theme)}catch(e){}
+  });
+
+  const links=document.getElementById('links'),burger=document.getElementById('burger');
+  const mq=matchMedia('(max-width:1120px)');
+  const sync=()=>{links.hidden=mq.matches;burger.setAttribute('aria-expanded','false')};
+  sync();mq.addEventListener('change',sync);
+  burger.addEventListener('click',()=>{links.hidden=!links.hidden;burger.setAttribute('aria-expanded',String(!links.hidden))});
+  links.addEventListener('click',e=>{if(e.target.tagName==='A'&&mq.matches)sync()});
+
+  const words=['Développeuse Full Stack','Designer UI/UX','Freelance web & mobile','Passionnée par le détail'];
+  const el=document.getElementById('typed');
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    let w=0,i=words[0].length,del=true;
+    setTimeout(function tick(){
+      const cur=words[w];
+      i+=del?-1:1;el.textContent=cur.slice(0,i);
+      let d=del?40:80;
+      if(!del&&i===cur.length){del=true;d=1800}
+      else if(del&&i===0){del=false;w=(w+1)%words.length;d=300}
+      setTimeout(tick,d);
+    },2200);
+  }
+
+  document.querySelectorAll('.filters:not(.gfilters) button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.filters:not(.gfilters) button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    document.querySelectorAll('.proj').forEach(p=>{p.hidden=!(b.dataset.f==='all'||p.dataset.cat===b.dataset.f)});
+  }));
+
+  document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+    const span=document.getElementById(b.dataset.copy);const txt=span.textContent;
+    const ok=()=>{b.textContent='Copié';setTimeout(()=>b.textContent='Copier',1600)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(span);const s=getSelection();s.removeAllRanges();s.addRange(r)};
+    try{navigator.clipboard.writeText(txt).then(ok,fallback)}catch(e){fallback()}
+  }));
+
+  const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
+  let lastFocus=null;
+  let gList=[],gIdx=-1;
+  const lbCount=document.getElementById('lbCount'),lbPrev=document.getElementById('lbPrev'),lbNext=document.getElementById('lbNext');
+  const openLb=(img,title,keepFocus)=>{if(!keepFocus){lastFocus=document.activeElement;gIdx=-1}lbPrev.hidden=lbNext.hidden=gIdx<0;lbCount.textContent=gIdx<0?'':(gIdx+1)+' / '+gList.length;lbImg.src=img.src;lbImg.alt=img.alt;lbCap.textContent=title;lb.classList.toggle('wide',img.closest('.webshot')!==null);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbClose').focus()};
+  const closeLb=()=>{lb.hidden=true;document.body.style.overflow='';if(lastFocus)lastFocus.focus()};
+  document.querySelectorAll('.phoneshot').forEach(shot=>{
+    const img=shot.querySelector('img'),title=shot.closest('.proj').querySelector('h3').textContent;
+    shot.insertAdjacentHTML('beforeend','<span class="zoom-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>Agrandir</span>');
+    shot.tabIndex=0;shot.setAttribute('role','button');shot.setAttribute('aria-label','Agrandir l\'écran de '+title);
+    shot.addEventListener('click',()=>openLb(img,title));
+    shot.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(img,title)}});
+  });
+  const showG=i=>{gIdx=(i+gList.length)%gList.length;const it=gList[gIdx];openLb(it.querySelector('img'),it.querySelector('figcaption').innerText.replace('\n',' · '),true)};
+  document.querySelectorAll('.gbtn').forEach(btn=>btn.addEventListener('click',()=>{
+    lastFocus=btn;gList=[...document.querySelectorAll('.gitem:not([hidden])')];showG(gList.indexOf(btn.closest('.gitem')));
+  }));
+  lbPrev.addEventListener('click',e=>{e.stopPropagation();showG(gIdx-1)});
+  lbNext.addEventListener('click',e=>{e.stopPropagation();showG(gIdx+1)});
+  document.querySelectorAll('.gfilters button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.gfilters button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    document.querySelectorAll('.gitem').forEach(g=>{g.hidden=!(b.dataset.f==='all'||g.dataset.cat===b.dataset.f)});
+  }));
+  lb.addEventListener('click',e=>{if(e.target!==lbImg)closeLb()});
+  document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')closeLb();else if(gIdx>=0&&e.key==='ArrowRight')showG(gIdx+1);else if(gIdx>=0&&e.key==='ArrowLeft')showG(gIdx-1)});
+
+  document.getElementById('form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const n=document.getElementById('nom').value.trim(),m=document.getElementById('msg').value.trim();
+    const a=document.createElement('a');
+    a.href='https://wa.me/22374323874?text='+encodeURIComponent('Bonjour, je suis '+n+'.\n\n'+m);
+    a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
+  });
+})();
+</script>
+
+</body>
+</html>
